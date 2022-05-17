@@ -19,8 +19,6 @@ namespace NumbersDecompositionTests
             int number,
             bool expectedResult)
         {
-            // Arrange
-
             // Act
             bool result = _decompositionService.IsPrime(number);
 
@@ -42,6 +40,19 @@ namespace NumbersDecompositionTests
             primeNumbers.Should().BeEquivalentTo(expectedResult);
         }
 
+        [Theory]
+        [MemberData(nameof(GetDivisorNumbersData))]
+        public void Given_a_number_should_return_expected_divisors(
+            int number,
+            int[] expectedDivisors)
+        {
+            // Act
+            var divisors = _decompositionService.GetDivisorNumbers(number);
+
+            // Assert
+            divisors.Should().BeEquivalentTo(expectedDivisors);
+        }
+
         public static TheoryData<int, bool> IsPrimeData()
         {
             return new TheoryData<int, bool>
@@ -51,6 +62,20 @@ namespace NumbersDecompositionTests
                 { 1, false },
                 { 2, true },
                 { 17, true }
+            };
+        }
+
+        public static TheoryData<int, int[]> GetDivisorNumbersData()
+        {
+            return new TheoryData<int, int[]>
+            {
+                { -99, new int[] { } },
+                { 0, new int[] { } },
+                { 2, new int[] { 1, 2 } },
+                { 4, new int[] { 1, 2, 4 } },
+                { 5, new int[] { 1, 5 } },
+                { 6, new int[] { 1, 2, 3, 6} },
+                { 11, new int[] { 1, 11 } }
             };
         }
     }
