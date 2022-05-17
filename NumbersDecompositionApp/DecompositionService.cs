@@ -15,10 +15,10 @@ namespace NumbersDecompositionApp
     {
         public IEnumerable<int> GetDivisorNumbers(int number)
         {
-            for (int i = 1; i <= number; i++)
+            for (int divisor = 1; divisor <= number; divisor++)
             {
-                if (number % i == 0)
-                    yield return i;
+                if (number % divisor == 0)
+                    yield return divisor;
             }
         }
 
@@ -36,9 +36,9 @@ namespace NumbersDecompositionApp
                 return number == 2;
 
             int squareRoot = (int)Math.Sqrt(number);
-            for (int i = 3; i <= squareRoot; i += 2)
+            for (int divisor = 3; divisor <= squareRoot; divisor += 2)
             {
-                if (number % i == 0)
+                if (number % divisor == 0)
                     return false;
             }
             return true;
