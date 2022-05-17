@@ -10,6 +10,7 @@ namespace NumbersDecompositionApp
         IEnumerable<int> GetPrimeNumbers(IEnumerable<int> numbers);
         bool IsPrime(int number);
     }
+
     public class DecompositionService : IDecompositionService
     {
         public IEnumerable<int> GetDivisorNumbers(int number)

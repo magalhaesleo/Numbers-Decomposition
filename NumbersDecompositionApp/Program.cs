@@ -7,13 +7,13 @@ namespace NumbersDecompositionApp
     {
         static void Main(string[] args)
         {
-            int value;
+            int inputValue;
 
             while (true)
             {
                 Console.Write("Digite um número: ");
                 var line = Console.ReadLine();
-                if (line == null || int.TryParse(line, out value) is false)
+                if (line == null || int.TryParse(line, out inputValue) is false)
                 {
                     Console.WriteLine("Valor inválido, tente novamente...");
                     continue;
@@ -23,12 +23,12 @@ namespace NumbersDecompositionApp
             }
 
             var decomposition = new DecompositionService();
-            var divisors = decomposition.GetDivisorNumbers(value).ToList();
-            var primeNumbers = decomposition.GetPrimeNumbers(divisors).ToList();
+            var divisors = decomposition.GetDivisorNumbers(inputValue).ToList();
+            var primeDivisors = decomposition.GetPrimeNumbers(divisors).ToList();
 
-            Console.WriteLine("Número de Entrada: {0}", value);
+            Console.WriteLine("Número de Entrada: {0}", inputValue);
             Console.WriteLine("Números divisores: {0}", string.Join(' ', divisors));
-            Console.WriteLine("Dívisores Primos: {0}", string.Join(' ', primeNumbers));
+            Console.WriteLine("Dívisores Primos: {0}", string.Join(' ', primeDivisors));
         }
     }
 }
